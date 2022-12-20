@@ -1,0 +1,107 @@
+ <!DOCTYPE html>
+ <html lang="en">
+ <head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" type="text/css" href="style.css">
+ </head>
+ <body>
+    <div class="container">
+      <form action="" class="form">
+        <fieldset class="form__btns">
+          <input class="btn" type="submit" value="Add">
+          <input class="btn" type="button" value="Edit">
+          <input class="btn" type="submit" value="Delete">
+          <input class="btn" type="submit" value="Find">
+          <input class="btn" type="submit" value="Save">
+
+        </fieldset>
+        
+        <label for="name">First Name</label>
+        <input
+          class="field"
+          type="text"
+          id="name"
+          name="name"
+          placeholder="Your name..">
+        <label for="dob">Date of Birth</label>
+        <input
+          class="field"
+          type="date"
+          id="dob"
+          name="dob"
+          placeholder="Date of Birth">
+
+        <label for="age">Age</label>
+        <input
+          class="field"
+          type="number"
+          id="age"
+          name="age"
+          placeholder=""
+          >
+    
+        <label for="doj">Date of Joining</label>
+        <input 
+          class="field"
+          type="date"
+          id="doj"
+          name="doj"
+          placeholder="Date of Joining"
+        >
+                  
+        <label for="mobile">Mobile</label>
+        <input
+          class="field"
+          type="tel"
+          id="mobile"
+          name="mobile" placeholder="Mobile No">
+                  
+        <label for="address">Address</label>
+        <input
+          class="field"
+          type="text"
+          id="address"
+          name="address" placeholder="Address"
+        >
+        <label for="country">City</label>
+        <select class="field" id="city" name="city">
+        </select>
+        <label for="state">State</label>
+        <input
+          class="field"
+          type="text"
+          id="state"
+          name="state"
+          placeholder="Your state" disabled >
+    
+        <label for="country">Country</label>
+        <input
+          class="field"
+          type="text"
+          id="country"
+          name="country"
+          placeholder="Your country" disabled>
+  
+        <table id="education" class="table">
+          <tr>
+            <th>Class</th>
+            <th>College</th>
+            <th>Obtaining</th>
+            <th>Obtained</th>
+            <th>%</th>
+          </tr>        
+        </table>
+                      
+        <div class="total">
+          <span >Overall%</span>
+          <span>59</span>
+        </div>
+        
+        </form>
+      </div>
+      <script src="index.js"></script>
+  </body>
+ </html>
