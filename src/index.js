@@ -83,40 +83,66 @@ const renderTable = () => {
 			<td>
 				<input
 					type="text"
-					name="obtained"
-					id=obtained-${i}
-					class="table__field"
-					value=${item.obtained}
-					>
-			</td>
-			<td>
-				<input
-					type="text"
 					name="obtaining"
 					id=obtaining-${i}
 					class="table__field"
 					value=${item.obtaining}
 					>
 			</td>
+			<td>
+				<input
+					type="text"
+					name="obtained"
+					id=obtained-${i}
+					class="table__field"
+					value=${item.obtained}
+					>
+			</td>
+			
 
 		`;
 
 		const obtaining = row.querySelector(`#obtaining-${i}`);
 		const obtained = row.querySelector(`#obtained-${i}`);
 
-		
-
 		const updatePercentage = () => {
-			percentage.innerHTML = Math.round((obtaining.value / obtained.value) * 100);
+			let res = '...';
+			if (obtaining.value && obtained.value) {
+				res = Math.round((obtaining.value / obtained.value) * 100)
+			}
+			percentage.innerHTML = res;
 		}
-		obtained.addEventListener('change', updatePercentage);
-		obtaining.addEventListener('change', updatePercentage);
+		obtained.addEventListener('input', updatePercentage);
+		obtaining.addEventListener('input', updatePercentage);
 		
 		updatePercentage();
 
 		row.appendChild(percentage);
 		table.appendChild(row);
 	});
+}
+
+const calculateOverall = () => {
+	const allMarks = document.querySelectorAll('.table__field[name=obtained]');
+	const completedMarks = document.querySelectorAll('.table__field[name=obtaining]');
+
+	let obtained = 0;
+	let obtaining = 0;
+
+	allMarks.forEach(item => {
+		obtained += +item.value;
+
+		item.addEventListener('input', calculateOverall);
+	});
+
+	completedMarks.forEach(item => {
+		obtaining += +item.value;
+
+		item.addEventListener('input', calculateOverall);
+	});
+
+	const res = Math.round((obtaining / obtained) * 100);
+	document.querySelector('.overall__value').innerHTML = res;
 }
 
 
@@ -130,6 +156,7 @@ const run = () => {
 
 	renderTable();
 
+	calculateOverall();
 }
 
 window.addEventListener('load', run);
