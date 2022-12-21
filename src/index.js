@@ -159,6 +159,25 @@ const autofillAge = () => {
 	age.value = res;
 }
 
+// mobile phone number validate
+
+const validateTel = () => {
+	const tel = document.querySelector('#mobile');
+
+	const err = document.querySelector('.tel__error');
+
+	// phone mask matches 
+	// XXX-XXX-XXXX
+	// XXXXXXXXXX
+	const mask = /^\(?([0-9]{3})\)?[-]?([0-9]{3})[-]?([0-9]{4})$/;
+
+  if(mask.test(tel.value)) {
+		err.style.display = 'none';
+    return;
+  } else {
+		err.style.display = 'block';
+  }
+}
 
 const run = () => {
 	const citySelect = document.querySelector('#city');
@@ -172,6 +191,9 @@ const run = () => {
 	renderTable();
 
 	calculateOverall();
+
+	const tel = document.querySelector('#mobile');
+	tel.addEventListener('input', validateTel);
 }
 
 window.addEventListener('load', run);
