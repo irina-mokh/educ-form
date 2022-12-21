@@ -122,6 +122,7 @@ const renderTable = () => {
 	});
 }
 
+// calculate overall percentage under table
 const calculateOverall = () => {
 	const allMarks = document.querySelectorAll('.table__field[name=obtained]');
 	const completedMarks = document.querySelectorAll('.table__field[name=obtaining]');
@@ -145,10 +146,24 @@ const calculateOverall = () => {
 	document.querySelector('.overall__value').innerHTML = res;
 }
 
+// autofill age for today
+const autofillAge = () => {
+	const age = document.querySelector('#age');
+	const dob = document.querySelector('#dob');
+
+	dob.addEventListener('input', autofillAge);
+
+	const today = new Date();
+
+	const res = Math.floor((today -new Date(dob.value)) / (365 * 24 *60*60*1000));
+	age.value = res;
+}
+
 
 const run = () => {
 	const citySelect = document.querySelector('#city');
 
+	autofillAge();
 	renderSelect();
 	autofillAddress();
 
